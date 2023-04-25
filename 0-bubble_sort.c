@@ -13,18 +13,17 @@ void bubble_sort(int *array, size_t size)
 {
 	size_t i, j;
 	int tmp = 0;
-	bool is_sorted = true;
+	bool is_sorted;
 
-	for (i = 0; i < size - 1; i++)
+	for (i = 0; i < size; i++)
 	{
-		printf("fnum: %lu\n", i);
-		for (j = 0; j < size - i - 1; j++)
+		is_sorted = true;
+		for (j = 1; j < size - i; j++)
 		{
-			printf("snum: %lu\n", j);
-			if (array[j] > array[j + 1])
+			if (array[j] < array[j - 1])
 			{
-				tmp = array[j + 1];
-				array[j + 1] = array[j];
+				tmp = array[j - 1];
+				array[j - 1] = array[j];
 				array[j] = tmp;
 				print_array(array, size);
 				is_sorted = false;
