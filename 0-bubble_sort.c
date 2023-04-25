@@ -13,23 +13,27 @@ void bubble_sort(int *array, size_t size)
 {
 	size_t i, j;
 	int tmp = 0;
-	bool swap;
+	bool is_sorted = true;
 
 	for (i = 0; i < size - 1; i++)
 	{
-		swap = false;
+		printf("fnum: %lu\n", i);
 		for (j = 0; j < size - i - 1; j++)
 		{
+			printf("snum: %lu\n", j);
 			if (array[j] > array[j + 1])
 			{
 				tmp = array[j + 1];
 				array[j + 1] = array[j];
 				array[j] = tmp;
 				print_array(array, size);
-				swap = true;
+				is_sorted = false;
 			}
 		}
-		if (swap == false)
-			break;
+		if (is_sorted)
+		{
+			print_array(array, size);
+			return;
+		}
 	}
 }
