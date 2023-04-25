@@ -20,7 +20,7 @@ void insertion_sort_list(listint_t **list)
 		node = node->next;
 	}
 
-	current = head->next /*getting the second node, array[1]*/
+	current = head->next; /*getting the second node, array[1]*/
 
 	for (index = 0; index < length; index++)
 	{
