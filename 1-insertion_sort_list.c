@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 /**
  * insertion_sort_list - sort the list in ascending order
@@ -18,12 +19,14 @@ void insertion_sort_list(listint_t **list)
 	while (current != NULL)
 	{
 		prev_node = current->prev;
+		printf("new: %d\n", current->n);
 		next_node = current->next;
 		while (prev_node != NULL)
 		{
 			if (current->n < prev_node->n)
 			{
-				current->next->prev = prev_node;
+				if (current->next != NULL)
+					current->next->prev = prev_node;
 				prev_node->next = current->next;
 				current->next = prev_node;
 				current->prev = prev_node->prev;
@@ -33,6 +36,7 @@ void insertion_sort_list(listint_t **list)
 				else
 					current->prev->next = current;
 				prev_node = current->prev;
+				printf("after swapping\n");
 				print_list(head);
 			}
 			else
@@ -40,6 +44,8 @@ void insertion_sort_list(listint_t **list)
 				break;
 			}
 		}
+		printf("before");
 		current = next_node;
+		printf("after");
 	}
 }
