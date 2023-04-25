@@ -8,18 +8,14 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *head, *node, *current, *next_node, *prev_node;
-	int index, length = 0;
+	listint_t *head, *current, *next_node, *prev_node;
 
 	head = *list;
-	node = head;
-	while(node != NULL)
-	{
-		length++;
-		node = node->next;
-	}
+	if (head == NULL)
+		return;
+
 	current = head->next; /*getting the second node, array[1]*/
-	for (index = 0; index < length && current != NULL; index++)
+	while (current != NULL)
 	{
 		prev_node = current->prev;
 		next_node = current->next;
