@@ -9,13 +9,13 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *head, *current, *next_node, *prev_node;
+	listint_t **head, *current, *next_node, *prev_node;
 
-	head = *list;
+	head = list;
 	if (head == NULL)
 		return;
 
-	current = head->next; /*getting the second node, array[1]*/
+	current = (*head)->next; /*getting the second node, array[1]*/
 	while (current != NULL)
 	{
 		prev_node = current->prev;
@@ -32,12 +32,12 @@ void insertion_sort_list(listint_t **list)
 				current->prev = prev_node->prev;
 				prev_node->prev = current;
 				if (current->prev == NULL)
-					head = current;
+					*head = current;
 				else
 					current->prev->next = current;
 				prev_node = current->prev;
 				printf("after swapping\n");
-				print_list(head);
+				print_list(*head);
 			}
 			else
 			{
